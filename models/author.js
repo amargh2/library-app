@@ -25,9 +25,33 @@ AuthorSchema
 })
 
 AuthorSchema
+.virtual('dob_formatted')
+.get(function() {
+  let dob
+  if (this.date_of_birth){
+    dob = this.date_of_birth.toLocaleDateString()
+  } else {
+    dob = 'Unknown.'
+  }
+  return dob
+})
+
+AuthorSchema
+.virtual('dod_formatted')
+.get(function() {
+  let dod
+  if (this.date_of_death) {
+    dod = this.date_of_death.toLocaleDateString()
+  } else {
+    dod = ''
+  }
+  return dod
+})
+
+AuthorSchema
 .virtual('url')
 .get(function(){
   return `/catalog/author/${this._id}`
 })
 
-module.exports = mongoose.model('Author', AuthorSchema)
+module.exports = mongoose.model('author', AuthorSchema)

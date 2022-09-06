@@ -15,5 +15,10 @@ BookInstanceSchema
 .get(function() {
   return `/catalog/booksinstance/${this._id}`
 })
+BookInstanceSchema
+.virtual('due_back_formatted')
+.get(function() {
+  return this.due_back.toLocaleString()
+})
 
 module.exports = mongoose.model('BookInstance', BookInstanceSchema)
