@@ -54,4 +54,4 @@ AuthorSchema
   return `/catalog/author/${this._id}`
 })
 
-module.exports = mongoose.model('author', AuthorSchema)
+module.exports = mongoose.model('Author', AuthorSchema)
